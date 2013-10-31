@@ -427,9 +427,9 @@
 		var cellIndex = x.parentNode.value%10;
 		var color = ownColor.substring(0, 5);
 
-		for(var i = -10; i <= 10; i += 10){
+		for(var i = -10; i < 10; i += 10){
 			rowIndex += i;			
-			for(var j = -1; j <= 1; j++){
+			for(var j = -1; j < 1; j++){
 				cellIndex += j;
 				if(document.getElementById(rowIndex+cellIndex).childNodes[1].alt.indexOf(color) == -1)
 					document.getElementById(rowIndex+cellIndex).style.backgroundColor = "#5CF266";
