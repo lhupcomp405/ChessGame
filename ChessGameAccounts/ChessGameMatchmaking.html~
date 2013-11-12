@@ -6,14 +6,6 @@
 <html lang = "en"  xmlns = "http://www.w3.org/1999/xhtml">
 
   <head>
-	<?php
-		session_start();
-		if(empty($_SESSION['username'])){
-			session_destroy();
-			header('Location: ChessGameLogin.html');
-		}
-
-	?>
 	<link rel="stylesheet" type="text/css " href="ChessStyleSheet.css">
 	<title>Chess Game Matchmaking</title>
 	<script type="text/javascript" src = "jquery.js"></script>

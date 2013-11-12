@@ -19,6 +19,7 @@
 
 		if($answerw != 0 && $answerb != 0)
 		{
+			
 			$playersanswered = true;
 		}
 

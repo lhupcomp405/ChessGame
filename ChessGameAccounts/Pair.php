@@ -60,7 +60,7 @@
 		 $result = mysqli_query($con,$sql);
 		 //echo "<br/>The two users were entered into the pair table...oh yeah, in pair_id: " . $pairid;
 	}else{
-	//echo "Not enough players in the QUEUE";
-}
+		//echo "Not enough players in the QUEUE";
+	}
 include 'WaitForPair.php';
 ?>

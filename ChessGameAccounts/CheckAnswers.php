@@ -1,4 +1,10 @@
 <?php
+		session_start();
+		if(empty($_SESSION['username'])){
+			session_destroy();
+			header('Location: ChessGameLogin.html');
+		}
+
 
 //Need to check answers
 //If player_w yes and player_b no

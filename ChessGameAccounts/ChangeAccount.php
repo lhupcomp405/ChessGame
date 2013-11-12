@@ -1,4 +1,13 @@
 <?php
+<?php
+		session_start();
+		if(empty($_SESSION['username'])){
+			session_destroy();
+			header('Location: ChessGameLogin.html');
+		}
+
+	?>
+
 include "db_connect.php";
 $tbl_name = "ACCOUNT";
 error_reporting(E_ALL);

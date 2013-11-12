@@ -6,5 +6,4 @@ $sql = "UPDATE ACCOUNT SET player_status=1 WHERE username='$username'";
 $result = mysqli_query($con,$sql);
 $sql = "DELETE FROM QUEUE WHERE username='$username'";
 $result = mysqli_query($con,$sql);
-
 ?>

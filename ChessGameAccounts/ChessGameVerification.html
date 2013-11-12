@@ -1,6 +1,15 @@
 <html>
 
   <head>
+	<?php
+		session_start();
+		if(empty($_SESSION['username'])){
+			session_destroy();
+			header('Location: ChessGameLogin.html');
+		}
+
+	?>
+
 	<title>Chess Game Verification</title>
 </head>
 <body>
