@@ -43,7 +43,9 @@ include 'db_connect.php';
 	$query=mysqli_query($con, $sql);
 	$sql="UPDATE ACCOUNT SET player_status=2 WHERE username='$username'";
 	$query=mysqli_query($con,$sql);
-}
-//INCLUDE PAIR.php
+
+	//INCLUDE PAIR.php
 include 'Pair.php';
+}
+
 ?>

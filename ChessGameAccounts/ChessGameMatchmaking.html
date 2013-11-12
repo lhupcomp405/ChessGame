@@ -12,7 +12,7 @@
 			session_destroy();
 			header('Location: ChessGameLogin.html');
 		}
-
+		
 	?>
 	<link rel="stylesheet" type="text/css " href="ChessStyleSheet.css">
 	<title>Chess Game Matchmaking</title>
@@ -30,9 +30,6 @@
 			},
 			"Yes":  function(){
 				startGame(true);
-			},
-			Cancel: function(){
-				closeDialog();
 			}
 		 }	
 	 });
@@ -45,12 +42,15 @@
                 $("#findMatch").dialog('open');
 		$.post("Queue.php",{postanswer:answer},
 		function(data){
-			alert(data);
+			if(data == "EXIT"){
+				$("#findMatch").dialog('close');
+				alert("Game not found. Please Requeue.");
+			}else{
 			$(".ui-dialog-buttonpane button:contains('Yes')").show();
 			$(".ui-dialog-buttonpane button:contains('No')").show();
-			$(".ui-dialog-buttonpane button:contains('Cancel')").hide();
 			$("#findMatch").html("YOU ARE NOW IN A PAIR, do you accept?");
-			$(".ui-dialog-buttonpane button:contains('Yes')").button("enable");			
+			$(".ui-dialog-buttonpane button:contains('Yes')").button("enable");
+			}			
 		});
 		
             }
@@ -58,24 +58,47 @@
     });
 	
 	function closeDialog(){
-		var answer;
-		$.post("cancelQueueRequest.php", {postanswer:answer}, function(data){alert(data);});
 		$("#findMatch").dialog('close');
+		$.post("DeQueue.php");
 		
 	}
 	function startGame(result){
+		var answer1 = -1;
+		var answer2 = -1;
 		if(result){
-			alert("You have accepted the game");
-			var answer = 2;
-			$.post("InsertAnswer.php",{postanswer:answer}, function(data){$("#findMatch").dialog("close");});
+			var answer = 1;
+			$.post("InsertAnswer.php",{postanswer:answer}, function(data){
+			while((answer1 == -1 || answer2 == -1) || (answer1 == null || answer2 == null)){
+				
+				$.post("getAnswerw.php",{postanswer:answer}, function(data){
+					answer1 = data;	
+				});
+				
+				$.post("getAnswerb.php",{postanswer:answer}, function(data){
+					answer2 = data;
+					
+				});
+				alert("Answer Inserted");	
+			}
+			if(answer1 == 1 && answer2 == 1){
+		
+				window.location.href="/~comp405/zswartwo/CurrentChessGame/GUISample.html";
+				
+			}
+			else{
+				var location = <?php echo json_encode($_SERVER['PHP_SELF']);?>;
+				window.location.href=""+location+"";
+			}
+			
+			});
 			$("#findMatch").html("Waiting for other player");
 			$(".ui-dialog-buttonpane button:contains('No')").button("disable");
 			$(".ui-dialog-buttonpane button:contains('Yes')").button("disable");
+			$(".ui-dialog-titlebar-close").hide();
 	
 			
 		}else if(!result){
-			var answer = 1;
-			alert("You have declined the game");
+			var answer = 0;
 			$.post("InsertAnswer.php", {postanswer:answer}, function(data){});
 			$("#findMatch").dialog("close");
 		}

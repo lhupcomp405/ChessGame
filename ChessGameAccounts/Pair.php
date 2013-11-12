@@ -52,15 +52,13 @@
 		 //echo "pair id after addition is: " . $pairid . "<br/>";
 	//Inserts the two players into the pair table
 		 $sql="INSERT INTO PAIR(pair_id, player_w, pw_answer, player_b, pb_answer)
-				VALUES ($pairid, '$player_w', 0, '$player_b', 0)";
+				VALUES ($pairid, '$player_w', -1, '$player_b', -1)";
 		 $query=mysqli_query($con,$sql);
 		 $sql="UPDATE ACCOUNT SET player_status=3 where username='$player_w' OR username='$player_b'";
 		 $query=mysqli_query($con,$sql);
 		 $sql = "DELETE FROM QUEUE WHERE username='$player_w' OR username='$player_b'";
 		 $result = mysqli_query($con,$sql);
 		 //echo "<br/>The two users were entered into the pair table...oh yeah, in pair_id: " . $pairid;
-	}else{
-		//echo "Not enough players in the QUEUE";
 	}
 include 'WaitForPair.php';
 ?>

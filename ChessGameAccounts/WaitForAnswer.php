@@ -1,8 +1,8 @@
 <?php
 //Check If both players responded
 	$playersanswered = false;
-	$answerw = NULL;
-	$answerb = NULL;
+	$answerw = -1;
+	$answerb = -1;
 	
 	//Loop until both respond
 	do
@@ -17,9 +17,11 @@
 		$row = mysqli_fetch_array($result);
 		$answerb = $row['pb_answer'];
 
-		if($answerw != 0 && $answerb != 0)
-		{
-			
+		if($answerw != -1 && $answerb != -1)
+		{	
+			session_start();
+			$_SESSION['answerw'] = $answerw;
+			$_SESSION['answerb'] = $answerb;
 			$playersanswered = true;
 		}
 

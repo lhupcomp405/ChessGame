@@ -36,15 +36,22 @@
 	else
 
 	{
+		//Get the pair_id if youre player_b
+		$sql="SELECT pair_id FROM PAIR WHERE player_b='$username'";
+		$result=mysqli_query($con, $sql);
+		$row = mysqli_fetch_array($result);
+		$pair_id = $row['pair_id'];
+
 		//insert the answer
 		$sql="UPDATE PAIR SET pb_answer=$answer WHERE player_b='$username'";
 		$result = mysqli_query($con, $sql);
 		$player_b = $username;
 
-		$sql="SELECT player_w FROM PAIR WHERE pair_id=$pairid";
+		$sql="SELECT player_w FROM PAIR WHERE pair_id=$pair_id";
 		$result=mysqli_query($con, $sql);
 		$row = mysqli_fetch_array($result);
 		$player_w = $row['player_w'];
+
 	}
 
 	include 'WaitForAnswer.php';
