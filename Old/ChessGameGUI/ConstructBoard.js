@@ -36,21 +36,21 @@ function createBoard(x) {
                 } else if (row === 8 && cell === 4) {
                     document.write('<img src="WhiteKing.png" alt="WhiteKing" id="WhiteKing"');
                 } else if ((row === 1 && cell === 3) || (row === 1 && cell === 6)) {
-                    document.write('<img src="BlackBishop.png" alt="BlackBishop" id="BlackBishop"');
+                    document.write('<img src="BlackBishop.png" alt="BlackBishop', cell, '" id="BlackBishop', cell, '"');
                 } else if ((row === 8 && cell === 3) || (row === 8 && cell === 6)) {
-                    document.write('<img src="WhiteBishop.png" alt="WhiteBishop" id="WhiteBishop"');
+                    document.write('<img src="WhiteBishop.png" alt="WhiteBishop', cell, '" id="WhiteBishop', cell, '"');
                 } else if ((row === 1 && cell === 2) || (row === 1 && cell === 7)) {
-                    document.write('<img src="BlackKnight.png" alt="BlackKnight" id="BlackKnight"');
+                    document.write('<img src="BlackKnight.png" alt="BlackKnight', cell, '" id="BlackKnight', cell, '"');
                 } else if ((row === 8 && cell === 2) || (row === 8 && cell === 7)) {
-                    document.write('<img src="WhiteKnight.png" alt="WhiteKnight" id="WhiteKnight"');
+                    document.write('<img src="WhiteKnight.png" alt="WhiteKnight', cell, '" id="WhiteKnight', cell, '"');
                 } else if ((row === 1 && cell === 8) || (row === 1 && cell === 1)) {
-                    document.write('<img src="BlackRook.png" alt="BlackRook" id="BlackRook"');
+                    document.write('<img src="BlackRook.png" alt="BlackRook', cell, '" id="BlackRook', cell, '"');
                 } else if ((row === 8 && cell === 1) || (row === 8 && cell === 8)) {
-                    document.write('<img src="WhiteRook.png" alt="WhiteRook" id="WhiteRook"');
+                    document.write('<img src="WhiteRook.png" alt="WhiteRook', cell, '" id="WhiteRook', cell, '"');
                 } else if (row === 2) {
-                    document.write('<img src="BlackPawn.png" alt="BlackPawn" id="BlackPawn"');
+                    document.write('<img src="BlackPawn.png" alt="BlackPawn', cell, '" id="BlackPawn', cell, '"');
                 } else if (row === 7) {
-                    document.write('<img src="WhitePawn.png" alt="WhitePawn" id="WhitePawn"');
+                    document.write('<img src="WhitePawn.png" alt="WhitePawn', cell, '" id="WhitePawn', cell, '"');
                 } else {
                     document.write('<img src="Blank.png" alt="Blank" id="Blank"');
                 }
@@ -98,21 +98,21 @@ function createBoard(x) {
                 } else if (row === 8 && cell === 4) {
                     document.write('<img src="WhiteKing.png" alt="WhiteKing" id="WhiteKing"');
                 } else if ((row === 1 && cell === 3) || (row === 1 && cell === 6)) {
-                    document.write('<img src="BlackBishop.png" alt="BlackBishop" id="BlackBishop"');
+                    document.write('<img src="BlackBishop.png" alt="BlackBishop', cell, '" id="BlackBishop', cell, '"');
                 } else if ((row === 8 && cell === 3) || (row === 8 && cell === 6)) {
-                    document.write('<img src="WhiteBishop.png" alt="WhiteBishop" id="WhiteBishop"');
+                    document.write('<img src="WhiteBishop.png" alt="WhiteBishop', cell, '" id="WhiteBishop', cell, '"');
                 } else if ((row === 1 && cell === 2) || (row === 1 && cell === 7)) {
-                    document.write('<img src="BlackKnight.png" alt="BlackKnight" id="BlackKnight"');
+                    document.write('<img src="BlackKnight.png" alt="BlackKnight', cell, '" id="BlackKnight', cell, '"');
                 } else if ((row === 8 && cell === 2) || (row === 8 && cell === 7)) {
-                    document.write('<img src="WhiteKnight.png" alt="WhiteKnight" id="WhiteKnight"');
+                    document.write('<img src="WhiteKnight.png" alt="WhiteKnight', cell, '" id="WhiteKnight', cell, '"');
                 } else if ((row === 1 && cell === 8) || (row === 1 && cell === 1)) {
-                    document.write('<img src="BlackRook.png" alt="BlackRook" id="BlackRook"');
+                    document.write('<img src="BlackRook.png" alt="BlackRook', cell, '" id="BlackRook', cell, '"');
                 } else if ((row === 8 && cell === 1) || (row === 8 && cell === 8)) {
-                    document.write('<img src="WhiteRook.png" alt="WhiteRook" id="WhiteRook"');
+                    document.write('<img src="WhiteRook.png" alt="WhiteRook', cell, '" id="WhiteRook', cell, '"');
                 } else if (row === 2) {
-                    document.write('<img src="BlackPawn.png" alt="BlackPawn" id="BlackPawn"');
+                    document.write('<img src="BlackPawn.png" alt="BlackPawn', cell, '" id="BlackPawn', cell, '"');
                 } else if (row === 7) {
-                    document.write('<img src="WhitePawn.png" alt="WhitePawn" id="WhitePawn"');
+                    document.write('<img src="WhitePawn.png" alt="WhitePawn', cell, '" id="WhitePawn', cell, '"');
                 } else {
                     document.write('<img src="Blank.png" alt="Blank" id="Blank"');
                 }

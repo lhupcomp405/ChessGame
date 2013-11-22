@@ -8,7 +8,7 @@
  *    -Clears board highlighting and removes move lockout
  */
 function makeMove() {
-    if (endLoc.parentNode.parentNode.parentNode.style.backgroundColor !== endLoc.parentNode.style.backgroundColor) {
+    if (endLoc.style.backgroundColor !== endLoc.parentNode.style.backgroundColor) {
         if (endLoc.alt.indexOf("Blank") === -1 && endLoc.alt.indexOf("White") !== -1 && selectedID.alt.indexOf("Black") !== -1) {
             document.getElementById("takenWhite").innerHTML += "<img src='" + endLoc.src + "' class='icon'></img>" + "\n";
         } else if (endLoc.alt.indexOf("Blank") === -1 && endLoc.alt.indexOf("Black") !== -1 && selectedID.alt.indexOf("White") !== -1) {
@@ -40,7 +40,6 @@ function makeMove() {
     }
     moveNumber++;
     alert("MoveNumber: " + moveNumber + " Piece: " + endLoc.alt + " EndLocation: " + endLocParent);
-	
     if (player === 1) {
         player = 2;
     } else {
