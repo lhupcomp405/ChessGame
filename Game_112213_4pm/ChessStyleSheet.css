@@ -1,0 +1,170 @@
+html,body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.layout {
+    border-style: solid;
+    border-color: #900;
+    border-width: 2px;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    height: 80%;
+    
+}
+
+.board {
+    border-style: solid;
+    border-width: 19px;
+    border-color: #000;
+    min-width: 100%;
+	max-width:100%;
+	min-height:75%;
+	max-height:100%;
+}
+
+.taken {
+    border-style: solid;
+    border-color: #000;
+    vertical-align: middle;
+    border-width: 2px;
+    width: 100%;
+    height: 100%;
+}
+
+.optionsDisplay {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    width: 100%;
+    background-color: #900;
+    text-align: center;
+}
+
+.chat {
+    background-color: #900;
+    text-align: center;
+    width: 100%;
+    height: 20%;
+}
+
+.takenTitle {
+    border-style: ridge;
+    border-color: #3F3F3F;
+    text-align: center;
+    height: 20%;
+    width: 100%;
+}
+
+.takenColumn {
+    border-style: ridge;
+    border-color: #3F3F3F;
+    text-align: center;
+    height: 100%;
+    width: 50%;
+}
+
+.boardCell {
+    height: 70%;
+    width: 75%;
+}
+
+.controlButton {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #000;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    width: 33%;
+    height: 25%;
+}
+
+.white {
+    color: #FFF;
+}
+
+.takenCell {
+    height: 50%;
+    width: 100%;
+}
+
+.blackspaces {
+    background-color: #000;
+    border-style: ridge;
+    border-color: #000;
+    height: 12.5%;
+    width: 12.5%;
+    min-width: 40px;
+    max-width: 40px;
+    min-height: 40px;
+    max-height: 40px;
+}
+
+.whitespaces {
+    background-color: #FFF;
+    border-style: ridge;
+    border-color: #000;
+    height: 12.5%;
+    width: 12.5%;
+    min-width: 40px;
+    max-width: 40px;
+    min-height: 40px;
+    max-height: 40px;
+}
+
+.blackspace {
+    background-color: #000;
+    width: 50%;
+    height: 50%;
+}
+
+.whitespace {
+    background-color: #FFF;
+    width: 50%;
+    height: 50%;
+}
+
+.piece {
+    bottom: 100px;
+    height: 40px;
+    width: 40px;
+}
+
+.icon {
+    height: 30px;
+    width: 30px;
+}
+
+.results {
+	border-style: solid;
+    border-color: #900;
+    border-width: 2px;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 300px;
+    min-width: 700px;
+}
+
+.rowLine {
+	border-style: solid;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 3px;
+	border-color: #900;
+}
+
+.big {
+	font-size: 25px;
+}
