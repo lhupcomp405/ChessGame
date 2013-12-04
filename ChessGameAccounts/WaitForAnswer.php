@@ -19,9 +19,7 @@
 
 		if($answerw != -1 && $answerb != -1)
 		{	
-			session_start();
-			$_SESSION['answerw'] = $answerw;
-			$_SESSION['answerb'] = $answerb;
+
 			$playersanswered = true;
 		}
 

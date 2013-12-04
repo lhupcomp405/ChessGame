@@ -38,7 +38,7 @@
 	//Insert into the game table
 	 	$sql="INSERT INTO GAME(game_num, player_w, player_b) VALUES ($game_id, '$player_w', '$player_b')";
 		$query=mysqli_query($con, $sql);
-		
+		$_SESSION['game_id'] = $game_id;
 
 	//Removes the pair
 	//	$sql="DELETE FROM PAIR WHERE pair_id=$pair_id";

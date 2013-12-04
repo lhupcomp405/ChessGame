@@ -1,5 +1,24 @@
 <?php
-//Contact Kyle if you have questions
+
+/*********************************************************************************
+verifyAccount.php
+Author:Kyle Leber
+
+This php file is executed when the user clicks or copies the URL address
+and submits the unique URL through a web browser that is sent via email from the 
+server to verify the account upon creation.  Upon the submission of the
+URL, the data submitted will be checked for equality against a field in
+the database, in which is designated as account_flag and one of two
+actions will occur.  If the value in the field for that account is set to 0,
+the account is referred to as inactive.  If the value in the field for that account
+is set to 1, the account is referred to as active.  Upon submission, if 
+account_flag is currently 0, then account_flag will be set to 1 and the user
+will be notified on the web page that their account is now active.  Upon
+submission, if account_flag is currently 1, then the user will be notified on
+the web page that the account is already active.
+**********************************************************************************/
+
+
 //includes db_connect.php file
 include 'db_connect.php';
 	 

@@ -1,0 +1,120 @@
+<!DOCTYPE  html>
+
+<html>
+	<head>
+	<title>Chess Game</title>
+	<link rel="stylesheet" type="text/css" href="GUISample.css">
+	<script type="text/javascript" src="GUISample.js"></script>
+	<script type="text/javascript" src="ConstructBoard.js"></script>
+	<script type="text/javascript" src="Highlight2.js"></script>
+	<script type="text/javascript" src="MakeMove.js"></script>
+	<script type="text/javascript" src="recordBoard.js"></script>
+	</head>
+
+<body onLoad="setupScreen(this)">
+
+<table id="header" width="100%" height="20%">
+	<tr id="headerRow" class="header">
+		<td width="15%">
+			<p class="white">
+				Logo
+			</p>
+		</td>
+		<td>
+			<p class="white">
+			Opponent Info
+			</p>
+		</td>
+		<td width="15%">
+			<p class="white">
+			Player Info
+			</p>
+		</td>
+	</tr>
+</table>
+<table id="layout" class="layout"><!-- layout square, including game board and control buttons -->
+	<tr id="game">
+
+		<td id="boardCell" rowspan="5" class="boardCell">
+			<table id="board" class="board"><!-- chess board -->
+				<script>
+					createBoard("1");<!-- 1 is player 1/white's perspective, 2 is player 2/black's perspective-->
+				</script>
+			</table>
+		</td>
+		<td>
+			<table id="optionsDisplay" class="optionsDisplay"><!-- taken table and all control buttons -->
+				<tr>
+					<td>
+						<table id="taken" class="taken"><!-- Contains all pieces removed from play -->
+							<tr id="takenrow1" class="takenTitle">								
+								<p>
+								Taken Pieces
+								</p>
+							</tr>
+							<tr id="takenrow2" width="100%">
+								<td id="takenWhite" class="takenColumn"><!-- White's column -->
+									<p>
+									White
+									</p>
+								</td>
+								<td id="takenBlack" class="takenColumn"><!-- Black's column -->
+									<p>
+									Black
+									</p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table id="buttonMenu"><!-- Control buttons -->
+							<tr>
+								<td id="resetMove" class="controlButton">
+									<p>
+										<button type="button" onClick="resetMove()">Reset Move</button>
+									</p>
+								</td>
+								<td id="makeMove" class="controlButton">
+									<p>
+										<button type="button" onClick="makeMove()">Make Move</button>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td id="check" class="controlButton">
+									<p>
+										<button type="button" onClick="callCheck()">Call Check</button>
+									</p>
+								</td>
+								<td id="staleMate" class="controlButton">
+									<p>
+										<button type="button" onClick="callStalemate()">Call Stalemate</button>
+									</p>
+								</td>
+								<td id="Concede" class="controlButton">
+									<p>
+										<button type="button" onClick="concede()">Concede</button>
+									</p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+<!-- end game stuffs -->
+</table>
+<table width="100%">
+<tr id="chat" class="chat" >
+	<td>
+		<p class="white">
+			Chat Bar
+		</p>
+	</td>
+</tr>
+</table>
+</body>
+</html>

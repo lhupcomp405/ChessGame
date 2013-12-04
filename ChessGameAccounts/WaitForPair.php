@@ -2,15 +2,14 @@
 
 	$paired = false;
 	$timer = 0;
-	$_SESSION['forcestop'] = 0;
-	$forceStop = 0;
+	$maxtime = 30;
 //Either the user was paired or they were not
 //Now the player needs to check if they are pair up
-	while($paired == false && $timer < 5)
+	while($paired == false && $timer < $maxtime)
 	{	
 	
 	//Check if paired now
-		$forceStop = $_SESSION['forcestop'];
+		
 		$sql="SELECT pair_id FROM PAIR WHERE player_w='$username' OR player_b='$username'";
 		$result=mysqli_query($con, $sql);
 		$row = mysqli_fetch_array($result);
@@ -27,13 +26,9 @@
 		{
 			$paired = true;
 		}
-		if($forceStop ==1)
-		{
-			$timer = 5;
-		}
 
 	}//End of waiting for pair loop
-	if($timer >= 5)
+	if($timer >= $maxtime)
 	{
 		include 'DeQueue.php';
 		echo "EXIT";

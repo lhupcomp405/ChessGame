@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- myTemplate.html
+     An example XHTML template
+     -->
+<html lang = "en"  xmlns = "http://www.w3.org/1999/xhtml">
+
+  <head>
+	<script src="md5.js"></script>
+	<script src="sha1.js"></script>
+	<link rel="stylesheet" type="text/css" href="ChessStyleSheet.css">
+	<title>Chess Game Login Page</title>
+	<script src="Checking.js"></script>
+</head>
+
+<body>
+<div id = "container">
+
+	<div id = "header">
+		<h1>Login</h1>
+	</div>
+	<div id="loginContent">
+		<form id="login" action="Verify.php" method="POST">
+			<p><label><input type="text" name="username" placeholder="username"></label></p>
+			<p><label><input type="password" onkeydown="rehash(this.value);" name="password" placeholder="password"></label></p>
+			<input type="hidden" id="hiddenfield" name="hiddenfield"/>
+			<input type="submit" name="Login" value="Login"><p>
+			Don't have an account?</br></p>
+			<input type="button" name="signup" id="signup" onclick="document.location.href='ChessGameSignup.html'" value="Sign Up">
+		</form>
+	</div>
+</div>
+</body>
+</html>

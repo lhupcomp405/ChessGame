@@ -17,18 +17,60 @@
 		}
 
 	?>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script type="text/javascript">
+		function sendMessage(msg){
+					
+			$.post("sendMessage.php", {msgpost:msg});
+			$("#messageHolder").val('');
+		}
+		function send(e){
+			if(e.keyCode === 13){
+				$.post("sendMessage.php", {msgpost:msg});
+				$("#messageHolder").html("");
+			}
+		}
+	
+	</script>
+<script>
+function startTime()
+{
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('time').innerHTML=h+":"+m+":"+s;
+t=setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+</script>
 
 </head>
 
-<body>
+<body onload='startTime()'>
 <div id = "container">
 
 <div id = "header">
-<h1>My Account<br/>
-	<?php 
+<p id='information' style='float:left; font-size:18px; text-align:left;'>	<?php 
 	  session_start();		
-	  echo "Welcome ". $_SESSION['username'];  
-	 ?></h1>
+	  echo "Current User:  ". $_SESSION['username']."<br/>";  
+	  echo "User Alias:  " . $_SESSION['alias']."<br/>";
+	 ?>
+Current Time:  <font color='white' id='time'></font>	
+</p>
+<h1>Account Page</h1>
+</p>
 <a href = "logout.php"><p>Logout</p></a>
 </div>
 
@@ -36,7 +78,40 @@
 <input type = "button" id = "matchmakingButton"  value = "Find A Match" onclick="location.href='ChessGameMatchmaking.html'"  >
 <input type = "button" id = "matchmakingButton"  value = "Check Statistics" onclick="location.href='ChessGameStats.html'"  >
 </div>
-<div id = "content">THIS is where the content will go.</div>
+<div id = "content">
+
+<center>
+<div id="chatHolder" style="width:500px; height:400px; color:white; overflow: scroll; margin-top:50px; text-align:left;">
+<script type="text/javascript">
+var timer, delay = 2000;
+timer = setInterval(function(){
+    $.ajax({
+      type    : 'POST',
+      url     : 'refreshChat.php',
+      dataType: 'text',
+      success : function(data){
+                  $("#chatHolder").html(data);
+		  $("#chatHolder").animate({ scrollTop: $('#chatHolder')[0].scrollHeight}, 1000); 
+		 
+        }
+    });
+}, delay);
+	</script>
+
+
+
+
+	</div>
+	<input type="text" id="messageHolder" maxlength="120" size="40" onkeypress="send()"/>
+<input type="button" id="submit"  value="Send Message" onclick="sendMessage(document.getElementById('messageHolder').value);"/>
+
+
+
+
+
+
+
+</div>
 
 <div id = "sidebar-right">
 	<div id = "picture"> <img src = "Chess_Pictures/napoleon_chess_setn600.gif" width = 100% height = 100%></div>

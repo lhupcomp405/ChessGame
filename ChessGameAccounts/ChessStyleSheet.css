@@ -170,4 +170,8 @@ border:2px solid black;
 	margin: 0px auto;
 	font-weight:bold;
 }
+
+.ui-dialog-titlebar-close {
+	visibility: hidden;
+}
 /*End of Sign Up Page*/

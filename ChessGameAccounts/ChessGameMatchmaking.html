@@ -39,7 +39,18 @@
         $("#findUnrankedMatch").click(
             function () {
 		var answer;
-                $("#findMatch").dialog('open');
+		  $("#findMatch").dialog('open');
+		   
+			var count = 0;
+		  setInterval(function(){
+			$("#loading").append(".");
+			count++;
+			if(count > 20){
+			  $("#loading").html(".");
+			  count = 0;
+			}
+			
+		  },100);
 		$.post("Queue.php",{postanswer:answer},
 		function(data){
 			if(data == "EXIT"){
@@ -62,28 +73,35 @@
 		$.post("DeQueue.php");
 		
 	}
-	function startGame(result){
+	function startGame(result)
+	{
 		var answer1 = -1;
 		var answer2 = -1;
 		if(result){
 			var answer = 1;
+			//post to insertanswer with an accepting answer of 1
 			$.post("InsertAnswer.php",{postanswer:answer}, function(data){
-			while((answer1 == -1 || answer2 == -1) || (answer1 == null || answer2 == null)){
-				
-				$.post("getAnswerw.php",{postanswer:answer}, function(data){
-					answer1 = data;	
-				});
-				
-				$.post("getAnswerb.php",{postanswer:answer}, function(data){
-					answer2 = data;
+			//loop until you get both answers
+			while(answer1 == -1 || answer2 == -1 || answer1 == null || answer2 == null){
+				//post to get answerw
+				$.ajax({type: "POST", url: "getAnswerw.php", success: function(data2){
+					answer1 = data2;
+					//alert('Inside the answerw post ['+answer1+']');	
+				}, dataType: "text", async: false});
+
+				//alert('After first post ['+answer1+']');
+
+				//post to get answerb	
+				$.ajax({type: "POST", url: "getAnswerb.php", success: function(data2){
+					answer2 = data2;
+					//alert('Inside the answerb post ['+answer2+']');
+				}, dataType: "text", async: false});
+				//alert('After second post ['+answer2+']');
+				//alert('Answer Inserted: Answer1: ['+answer1+']  Answer2: [' +answer2+']');
 					
-				});
-				alert("Answer Inserted");	
 			}
 			if(answer1 == 1 && answer2 == 1){
-		
-				window.location.href="/~comp405/zswartwo/CurrentChessGame/GUISample.html";
-				
+				window.location.href="game/Game.php";
 			}
 			else{
 				var location = <?php echo json_encode($_SERVER['PHP_SELF']);?>;
@@ -104,16 +122,49 @@
 		}
 	}
 	</script>
+<script>
+function startTime()
+{
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('time').innerHTML=h+":"+m+":"+s;
+t=setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+</script>
   </head>
 
-<body>
+<body onload='startTime()'>
 
 <div id = "container">
 <div id="findMatch">
-  You are now in the Queue. Click Cancel to be removed from the Queue.
+  You are now in the Queue...<center><p id="loading">.</p></center>
 </div>
 <div id = "header">
-<h1>Matchmaking</h1>
+<p id='information' style='float:left; font-size:18px; margin-top:0px; text-align:left;'>   <?php
+          session_start();
+          echo "Current User:  ". $_SESSION['username']."<br/>";
+          echo "User Alias:  " . $_SESSION['alias']."<br/>";
+         ?>
+Current Time:  <font color='white' id='time'></font>
+</p>
+
+
+
+<h1>Chessgame Matchmaking</h1>
 <a href = "logout.php"><p>Logout</p></a>
 </div>
 <input type = "button" id = "matchmakingButton"  value = "Find Ranked Game" onClick='alert("Queued for an Ranked game")'>

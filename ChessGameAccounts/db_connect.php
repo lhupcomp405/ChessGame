@@ -1,5 +1,23 @@
 <?php
-//contact Kyle if you have any questions
+/*******************************************************************
+db_connect.php
+Author: Kyle Leber
+
+This file is included in all files that require a connection to the database.
+The variable $dbhost is the location of the mysql database. The variable
+$dbuser is the username in which will be used to connect to the database.
+The variable $cmd is the command to retrieve the password from the jar file
+that corresponds to the value of $dbuser. The variable $dbpass is the password 
+used in junction with the username and is retrieved by the $cmd variable. The variable
+$dbdatabase is the name of the database which is to be used. $tblname is the
+name of the table in the database. $con is the mysqli command to connect to the
+database using $dbhost, $dbuser, $dbpass, $dbdatabase respectively in that
+order.  The connection is checked to ensure success, if it is not, then the script
+will die and the error message will be echoed on the page.
+
+*******************************************************************/
+
+
 
 //host of our database
 $dbhost = 'willy.lhup.edu';
