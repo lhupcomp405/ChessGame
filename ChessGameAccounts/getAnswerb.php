@@ -1,4 +1,8 @@
 <?php
+//This php echos the answerb of the user's pair
+//Written by: Zachary Swartwood
+//	      Kyle Leber
+//	      Matt Fartel
 	include 'db_connect.php';
 	
 	session_start();

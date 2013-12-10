@@ -1,4 +1,8 @@
 <?php
+//This php removes the user from the queue and changes there status to online
+//Written by: 
+
+
 include 'db_connect.php';
 session_start();
 $_SESSION['forcestop'] = 1;

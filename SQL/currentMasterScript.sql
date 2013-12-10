@@ -1,8 +1,12 @@
+//Author: Kenton Goodling
+
+DROP TABLE IF EXISTS CHAT;
 DROP TABLE IF EXISTS QUEUE;
 DROP TABLE IF EXISTS PAIR;
 DROP TABLE IF EXISTS MOVE;
 DROP TABLE IF EXISTS GAME;
 DROP TABLE IF EXISTS ACCOUNT;
+
 
 CREATE TABLE ACCOUNT(
 	firstname varchar(50), 
@@ -94,3 +98,9 @@ CREATE TABLE PAIR (
 
 INSERT INTO PAIR (pair_id, player_w, player_b) Values (1234, 'kleber', 'sstrayer');
 INSERT INTO PAIR (pair_id, player_w, player_b) Values (3456, 'whulsize', 'kgood');
+
+
+CREATE TABLE CHAT(
+	message VARCHAR(120),
+	username VARCHAR(50)
+);

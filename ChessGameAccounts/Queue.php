@@ -1,4 +1,9 @@
 <?php
+//This php puts the user into the QUEUE
+//Written by: Zachary Swartwood
+//	      Kyle Leber
+//	      Matt Fartell
+
 include 'db_connect.php';
 
 

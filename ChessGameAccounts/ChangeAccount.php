@@ -1,13 +1,10 @@
 <?php
-<?php
-		session_start();
-		if(empty($_SESSION['username'])){
-			session_destroy();
-			header('Location: ChessGameLogin.html');
-		}
-
-	?>
-
+session_start();
+if(empty($_SESSION['username'])){
+	session_destroy();
+	header('Location: ChessGameLogin.html');
+}
+/* Author Wes Hulszier */
 include "db_connect.php";
 $tbl_name = "ACCOUNT";
 error_reporting(E_ALL);
@@ -28,7 +25,7 @@ echo $alias;
 if ($alias != "" && $alias != null){
   $updateAlias = mysqli_query($con, "UPDATE $tbl_name SET alias= '$alias' WHERE username='$myusername'");
 }
-if ($securityQuestion != "" && $securityQuestion != null){
+if ($securityQuestion != "" && $securityQuestion != null && $securityAnswer != "" && $securityAnswer != null){
   $updateSQ = mysqli_query($con, "UPDATE $tbl_name SET security_question= '$securityQuestion' WHERE username='$myusername'");
 }
 if ($securityAnswer != "" && $securityAnswer != null){
@@ -46,11 +43,8 @@ $sql="SELECT security_question, security_question_answer,alias, skill_level, pho
 
 $result=mysqli_query($con, $sql);
 $count=mysqli_num_rows($result);
-if ($count > 0) {
-	header("Location: ".$_SERVER["HTTP_REFERER"]);
-} else {
 
-}
+header("Location: ChessGameAccountPage.html");
 //closes connection
 mysql_close($db_handle);
 

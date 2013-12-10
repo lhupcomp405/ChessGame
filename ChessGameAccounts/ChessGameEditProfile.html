@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- myTemplate.html
+     An example XHTML template
+     -->
+<!--Author: Wesly Charles - GUI-->
+<!--Author: Wes Hulsizer Form and php actions -->
+<html lang = "en"  xmlns = "http://www.w3.org/1999/xhtml">
+ <head>
+	<script type = "text/javascript" src = "Checking.js"></script>
+	<link rel="stylesheet" type="text/css" href="ChessStyleSheet.css">
+	<title>Chess Game Edit Profile</title>
+
+</head>
+
+<body>
+<div id = "formContainer">
+
+<div id = "header">
+<div id = "formTitle"><h1>Edit Profile<h1></div>
+</div>
+
+<div id = "formTable">
+<form name="Edit" method="post" action="ChangeAccount.php" > 
+<table>
+		<tr>
+		<td>Edit Alias:</td> 
+		<td><input type = "text" name = "Alias" id = "Alias"/>  </td>
+	</tr>
+
+	<tr><td>Change Password:</td>
+		<td><button type = "button" onclick = "openWindow();">Change Password</button></td>
+
+	</tr>
+
+	<tr>
+		<td>Edit Security Questions:</td>
+		<td><select name = "SecurityQuestion" />
+			<option> Where was your father born?</option>
+			<option> What is the name of your first pet?</option>
+			<option> What is your favorite food?</option>
+			<option> What is your spirit animal?</option>
+			<option> What is the name of your bestfriend?</option>
+			<option> Where did your parents first meet?</option>
+			</select> </td>
+	</tr>
+
+	<tr>
+		<td>Edit Security Question Answer:</td>
+		<td><input type = "text" name = "SQA"  /></td>
+	</tr>
+
+	<tr>
+		<td>Edit Phone Number:</td>
+		<td><input type = "text" name = "phoneNum" maxlength="10"/></td>
+	</tr>
+
+	<tr>
+		<td>Select a Skill Level:</td>
+		<td><select name = "skillLevel" />
+			<option> Beginner</option>
+			<option> Intermidiate</option>
+			<option> Master</option>
+			</select></td>
+	</tr>
+</table></div>
+
+<br />
+
+
+<div id = "formButtons">
+	<input type = "submit" value = "Finish">
+	<input type = "button" value = "Back" onclick="document.location.href='ChessGameAccountPage.html'"/>
+	<input type = "button" value = "Return to Login" onclick="document.location.href='ChessGameLogin.html'" />
+</div>
+
+</form>
+</div>
+
+</body>

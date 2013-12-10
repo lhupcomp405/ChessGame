@@ -1,4 +1,8 @@
 <?php
+//This php inserts the player's answer into the pair table
+//Written by: Zachary Swartwood
+//	      Kyle Leber
+//	      Matt Fartel
 	include 'db_connect.php';
 	
 //Get the answer and username

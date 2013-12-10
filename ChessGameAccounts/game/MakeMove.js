@@ -70,9 +70,16 @@ function makeMove() {
         selected = false;
         selectedID = "";
         endLoc = 0;
-        recordBoard();
 		if (fallenKing === 1) {
-			youWon();
+			moveTypeChar = "KT";
+			requestedResponse();
+			alert("You have won!");
+			showAlert = false;
+			//stub to send you to endgame page
+			$.post("updateWin.php", {user:username}, function(){});
+			window.open("EndGame.php?outcome='W'&player=" + playerScreen,"_self");
+		} else {
+			recordBoard();		
 		}
 		showAlert = true;
     }

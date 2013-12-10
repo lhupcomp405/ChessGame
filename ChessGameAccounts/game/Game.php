@@ -17,6 +17,9 @@
 	<script language="javascript" src="MakeMove.js"></script>
 	<script language="javascript" src="RecordBoard.js"></script>
 		<script language="javascript" src="Resolution.js"></script>
+	<script language="javascript"> 
+		username = <?php echo $_SESSION['username']; ?>;
+	</script>
 	<script language="javascript">setInterval(function(){update()},5000);</script><!-- connects to the database every 5 seconds to try to update -->
 	<script language="javascript">
 	$.ajax({type: "POST", url: "setPlayer.php", success: function(data){
@@ -50,7 +53,23 @@
 				</td>
 				<td>
 					<p class="white">
-					Opponent Info
+					
+					<?php
+						
+							include 'db_connect.php';
+							session_start();
+							$username = $_SESSION['username'];
+							$playerb = $_SESSION['playerb'];
+							$playerw = $_SESSION['playerw'];
+							
+							if($playerb == $username){
+								echo "Your opponent is: " . $playerw;
+							}else{
+								echo "Your opponent is: " . $playerb;
+							}
+											
+					?>
+
 					</p>
 				</td>
 				<td width="15%">

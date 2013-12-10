@@ -1,6 +1,8 @@
 //hashes the password on the client side and passes that hashed value to the database.
 //in the verify login, it uses the same hashing on the entered password before comparing
 //to the database.
+//Kyle Leber authored the hasing
+//Wes Hulsizer authored the rest
 function rehash(pt){
 	var md5 = CryptoJS.MD5(pt) + '';
 	var sha1 = CryptoJS.SHA1(md5) + '';
@@ -21,8 +23,10 @@ function CompareEmail(){
 	var vEmail = document.forms["SignUp"]["vEmail"].value;
 		if (email == vEmail){
 			document.SignUp.vEmail.style.backgroundColor="white ";
+			document.SignUp.vEmail.style.color="black";
 		} else if (email != vEmail){
 			document.SignUp.vEmail.style.backgroundColor="red ";
+			document.SignUp.vEmail.style.color="white";
 		}
 }
 
@@ -99,9 +103,7 @@ if (isNaN(phoneNum)==true || phoneNum.length != 10){
 	alert ("Phone number must be a 10 digit number");
 	document.SignUp.phone.style.backgroundColor="white";
 } 
-if (phoneNum == "" || phoneNum == null){
-	document.SignUp.phone.style.backgroundColor="white";
-} 
+ 
 }
 
 

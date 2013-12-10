@@ -126,7 +126,7 @@ function checkMate() {
  *	   - brings up confirmation box for player to concede to opponent
  */
 function concede() {
-	if (!gameOver && playerScreen == player) {
+	if (!gameOver) {
 		var resp = confirm("Are you sure you want to end the match?");
 		if (resp) {
 			moveTypeChar = "RR";

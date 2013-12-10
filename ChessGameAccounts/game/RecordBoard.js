@@ -74,7 +74,7 @@ function update() {
  *		- Else different, sets opponentBoardString to boardstring, and calls draw(string str) function
  */
 function updateBoard() {
-
+    $.post("dropPair.php", {user:username}, function(){});
     $.post("updateBoard.php", {cp:currentPlayer}, function(data){draw(data)});	
 
 }
@@ -241,12 +241,10 @@ function checkForTaken() {
 	for (var i = WhitePawn; i > 0; i--) {
 		document.getElementById("takenWhite").innerHTML += "<img src='" + "WhitePawn.png" + "' class='icon'></img>" + "\n";
 	}
-	if (BlackKing === 1 && playerScreen === 2) {
-		alert("Your King has fallen. You have lost.");
-		window.open("EndGame.php?outcome='L'&player=" + playerScreen,"_self");
+	if (WhiteKing > 0) {
+		document.getElementById("takenWhite").innerHTML += "<img src='" + "WhiteKing.png" + "' class='icon'></img>" + "\n";
 	}
-	if (WhiteKing === 1 && playerScreen === 1) {
-		alert("Your King has fallen. You have lost.");
-		window.open("EndGame.php?outcome='L'&player=" + playerScreen,"_self");
+	if (BlackKing > 0) {
+		document.getElementById("takenBlack").innerHTML += "<img src='" + "BlackKing.png" + "' class='icon'></img>" + "\n";
 	}
 }

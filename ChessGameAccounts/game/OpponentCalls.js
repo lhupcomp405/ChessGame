@@ -4,12 +4,12 @@
  * Author: Dan Ford
  * Description: Contains callStalemate(), callCheck(), checkMate(), and concede() functions
  */
-/* DOES NOT FUNCTION CORRECTLY YET
+/* Called when you select a button that needs the opponent's response, such as Stalemate, check, or checkmate
+ *	   - Sends option/response to player
  *
  */
 function requestedResponse() {
-	//unhighlightMoves();
-        if (player === 1) {
+        if (playerScreen === 1) {
             currentPlayer = 'B';
             player = 2;
             document.getElementById('playersMove').innerHTML = "BLACK'S MOVE";
@@ -25,11 +25,19 @@ function requestedResponse() {
         endLoc = 0;
         recordBoard();
 		showAlert = true;
-  //  recordBoard();
 }
 
-/* DOES NOT FUNCTION CORRECTLY YET
- *
+/* Called when your opponent calls requestedResponse()
+ *	   - Brings up option/outcome based on opponent
+ *	   - character options:
+ *			S0 = opponent called stalemate
+ *			S1 = opponent agreed to stalemate
+ *			S2 = opponent denied stalmate
+ *			M0 = opponent called checkmate
+ *			M1 = opponent agreed to checkmate
+ *			M2 = opponent denied checkmate
+ *			RR = opponent conceded
+ *			KT = King was taken	
  */
 function opponentRequestedResponse(character) {
 	if (showAlert) {
@@ -51,6 +59,9 @@ function opponentRequestedResponse(character) {
 		} else if (character === "M2") {
 			alert("Sorry, the opponent denied your checkmate.");
 			showAlert = false;
+		} else if (character = "KT") {
+			youLose();
+			$.post("updateLoss.php", {user:username}, function(data){alert(data);});
 		} else {
 			alert("It didn't work Scotty.");
 		}
@@ -59,7 +70,6 @@ function opponentRequestedResponse(character) {
  
 /* Called when you press Call Stalemate button
  *	   - brings up confirmation box for player to agree to stalemate
- * DOES NOT FUNCTION CORRECTLY YET
  */
 function opponentCalledStalemate() {
     var resp = confirm("Your opponent has called a stalemate. Would you like to end the match?");
@@ -81,7 +91,6 @@ function opponentCalledStalemate() {
 
 /* Called when you press Call Check button
  *	   - brings up alert box notifying player they are in check
- * DOES NOT FUNCTION CORRECTLY YET
  */
 function opponentCalledCheck() {
     alert("Your opponent has called check.");
@@ -90,7 +99,6 @@ function opponentCalledCheck() {
 
 /* Called when you press Call Checkmate button
  *	   - brings up confirmation box for player to agree to checkmate
- * DOES NOT FUNCTION CORRECTLY YET
  */
 function opponentCalledCheckMate() {
     var resp = confirm("Your opponent has called checkmate. Do you agree?");
@@ -121,6 +129,9 @@ function opponentConceded() {
 	window.open("EndGame.php?outcome='W'&player=" + playerScreen,"_self");
 }
 
+/* Called when you agree to stalemate
+ *	   - brings you to endgame page
+ */
 function tied() {
 	gameOver = true;
 	alert("Your opponent has agreed to a stalemate.");
@@ -129,10 +140,24 @@ function tied() {
 	window.open("EndGame.php?outcome='D'&player=" + playerScreen,"_self");
 }
 
+/* Called when you win
+ *	   - brings you to endgame page
+ */
 function youWon() {
 	gameOver = true;
 	alert("Congratulations, you won!");
 	showAlert = false;
 	//stub to send you to endgame page
 	window.open("EndGame.php?outcome='W'&player=" + playerScreen,"_self");
+}
+
+/* Called when you lose
+ *	   - brings you to endgame page
+ */
+function youLose() {
+	gameOver = true;
+	alert("Your King has fallen. You lost the game.");
+	showAlert = false;
+	//stub to send you to endgame page
+	window.open("EndGame.php?outcome='L'&player=" + playerScreen,"_self");
 }

@@ -1,4 +1,8 @@
 <?php
+//This php removes the pair that the user is in
+//Written by:
+
+
 include 'db_connect.php';
 session_start();
 

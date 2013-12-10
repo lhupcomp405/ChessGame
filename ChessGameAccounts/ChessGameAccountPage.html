@@ -3,6 +3,7 @@
 <!-- myTemplate.html
      An example XHTML template
      -->
+<!--Author: Wesly Charles - GUI-->
 <html lang = "en"  xmlns = "http://www.w3.org/1999/xhtml">
 
   <head>
@@ -79,9 +80,33 @@ Current Time:  <font color='white' id='time'></font>
 <input type = "button" id = "matchmakingButton"  value = "Check Statistics" onclick="location.href='ChessGameStats.html'"  >
 </div>
 <div id = "content">
+<p id="onlineUsers" onclick="displayPlayers()" style="">
+Online Players:
+<script type="text/javascript">
+var timer, delay = 2000;
+timer = setInterval(function(){
+    $.ajax({
+      type    : 'POST',
+      url     : 'refreshOnlinePlayers.php',
+      dataType: 'text',
+      success : function(data){
+                  $("#onlineUsers").html("Online Players: " + data); 
+		 
+        }
+    });
+}, delay);
+	</script>
+</p>
 
+<!-- 
+Beginning Code section for Chatbox by Timothy Francisco Bower (TFB), Matt Rogers and Wes Charles
+Please contact tbower2@lhup.edu if there are any question regarding question on functionality
+--> 
 <center>
-<div id="chatHolder" style="width:500px; height:400px; color:white; overflow: scroll; margin-top:50px; text-align:left;">
+<!-- TFB: Holds the messages that are downloaded from the database --> 
+<div id="chatHolder" style="width:500px; height:400px; color:white; overflow: scroll; margin-top:50px; text-align:left;"> 
+
+<!-- TFB: Refreshes chatHolder from database every 2 seconds and animates the scroll bar -->
 <script type="text/javascript">
 var timer, delay = 2000;
 timer = setInterval(function(){
@@ -98,20 +123,13 @@ timer = setInterval(function(){
 }, delay);
 	</script>
 
-
-
-
 	</div>
+	<!-- TFB: Message typed by the user to be sent to the database -->
 	<input type="text" id="messageHolder" maxlength="120" size="40" onkeypress="send()"/>
 <input type="button" id="submit"  value="Send Message" onclick="sendMessage(document.getElementById('messageHolder').value);"/>
-
-
-
-
-
-
-
 </div>
+
+<!-- End of code section for Chatbox-->
 
 <div id = "sidebar-right">
 	<div id = "picture"> <img src = "Chess_Pictures/napoleon_chess_setn600.gif" width = 100% height = 100%></div>
@@ -119,14 +137,20 @@ timer = setInterval(function(){
 		<p>Rank Points: 2000</p></div>
 	<div id = "edit"><a href = "ChessGameEditProfile.html"> Edit Profile</a></div>
 	<div id = "friends">
-		<p>Favorite Friends:</p>
-		<ul>
-			<li>Friend1</li>
-			<li>Friend2</li>
-			<li>Friend3</li>
-			<li>Etc...</li>
-
-		</ul>
+		<script type="text/javascript">
+var timer, delay = 2000;
+timer = setInterval(function(){
+    $.ajax({
+      type    : 'POST',
+      url     : 'Friends.php',
+      dataType: 'text',
+      success : function(data){
+                  $("#friends").html(data);
+        }
+    });
+}, delay);
+	</script>
+		
 	</div>
 </div>
 

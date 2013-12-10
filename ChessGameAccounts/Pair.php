@@ -1,4 +1,9 @@
 <?php
+//This php trys to form a pair between two players
+//Written by: Zachary Swartwood
+//	      Kyle Leber
+//	      Matt Fartel
+
 //Check if it can be paired
 //Count the number of users in Queue that have a Queue status of 0 and the same rank as the user
 	$sql="SELECT * FROM QUEUE WHERE status=$status AND skill=$skill";

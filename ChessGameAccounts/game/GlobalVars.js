@@ -14,6 +14,7 @@ var selected = false, //true if a piece has been clicked on
     playerScreen, //holds current player's screen to compare to "player" to only allow you to move if it is your turn
     currentPlayer = "W", //set current player's color
     lockout = false, //lockout disables all button clicks
+    username, //holds the username
 	takenString = "", //holds a list of all taken pieces in BB (Black Bishop) format
     boardString, //holds string of all current piece locs, first char is last player's color, "W" or "B", and followed by each piece's alt, ie. "BB" for black bishop
     opponentBoardString, //compared against boardString to see if the opponent has moved

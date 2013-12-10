@@ -1,3 +1,5 @@
+//hasing by Kyle Leber
+//all other functions by Wes Hulsizer
 //hashes the password on the client side and passes that hashed value to the database.
 //in the verify login, it uses the same hashing on the entered password before comparing
 //to the database.
@@ -6,16 +8,8 @@ function rehash(pt){
 	var sha1 = CryptoJS.SHA1(md5) + '';
 	document.getElementById("hiddenfield").value = sha1;
 }
-//Now unneccesary function
-function checkEula(){
-	var eula = document.getElementById("eulaCheck");
-	if(eula.checked){
-		return true;
-	}else{
-		return false;	
-	}
-}
-
+//verify that email & verify email are typed the same
+//changes colors if not matching
 function CompareEmail(){
 	var email = document.forms["SignUp"]["email"].value;
 	var vEmail = document.forms["SignUp"]["vEmail"].value;
@@ -27,7 +21,7 @@ function CompareEmail(){
 			document.SignUp.vEmail.style.color="white";
 		}
 }
-
+//make sure all values are entered at the signup page
 function CheckSignUp(){
 var firstname = document.forms["SignUp"]["firstname"].value;
 var lastname = document.forms["SignUp"]["lastname"].value;
@@ -81,19 +75,17 @@ var eula_confirmed = 1;
 		return true;
 	}
 }
-
+//check that the phone number has the correct length & is a number
 function CheckingNumber(){
 var phoneNum = document.forms["SignUp"]["phone"].value;
 if (isNaN(phoneNum)==true || phoneNum.length != 10){
-    //document.forms["SignUp"]["phone"].value = "";
 	document.SignUp.phone.style.backgroundColor="red";
-	//alert ("Phone number must be a 10 digit number");
 } else {
 	document.SignUp.phone.style.backgroundColor="white";
 }
 
 }
-
+//check that the phone number has the correct length & is a number
 function CheckingNumberandclear(){
 var phoneNum = document.forms["SignUp"]["phone"].value;
 if (isNaN(phoneNum)==true || phoneNum.length != 10){
@@ -103,7 +95,6 @@ if (isNaN(phoneNum)==true || phoneNum.length != 10){
 } 
  
 }
-
 
 function CheckingFunction(){
 var Alias = document.forms["Edit"]["Alias"].value;
@@ -138,7 +129,8 @@ if (isNaN(phoneNum)==true || phoneNum.length != 10){
 }
 
 }
-//Old Password:<input type = 'password' maxlength="32" name = 'OldPassword'/>New Password<input type = 'password' maxlength="32" name ='NPassword' />Verify New Password:<input type = 'password' maxlength="32" name = 'vPassword' />
+//function to open a new window for new password entry and verification
+//INCOMPLETE
 function openWindow()
 {
 var left = (screen.width/2);
@@ -163,7 +155,7 @@ myWindow.document.write("<html><head>"
 //myWindow.document.write('<html><head></head><body><input type="button" onclick="alert("hello");"/></body></html>');
 myWindow.focus();
 }
-
+//check the passwords to make sure all fields are entered
 function CheckPassword(){
 
 var OldPassword = document.getElementById('OldPassword').value;
@@ -184,7 +176,8 @@ else if (vPassword == null || vPassword ==""){
 } else return true;
 }
 
-
+//check to make sure that the new password matches in the N field and the V password
+//make sure they verfiy the password
 function MatchPassword(vPassword){
 
 var NPassword = document.getElementById('NPassword').value;

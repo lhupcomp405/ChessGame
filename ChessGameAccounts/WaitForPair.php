@@ -1,4 +1,9 @@
 <?php
+//This php loops until the it seen that the player has been put into a pair
+//Written by: Zachary Swartwood
+//	      Kyle Leber
+//	      Matt Fartel
+
 
 	$paired = false;
 	$timer = 0;

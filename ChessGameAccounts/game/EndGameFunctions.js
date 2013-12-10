@@ -32,5 +32,5 @@ function determineOutcome() {
 }
 
 function returnHomepage() {
-	window.open("../ChessGameAccountPage.html");
+	window.open("../ChessGameAccountPage.html","_self");
 }

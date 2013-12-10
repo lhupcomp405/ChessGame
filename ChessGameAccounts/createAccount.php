@@ -98,10 +98,10 @@ if ($count > 0) {
 	$hash = mysql_escape_string($hash);
 	
 	//SQL query to insert the form data of the user into the database
-	$sqlquery = "INSERT INTO ACCOUNT (firstname, lastname,username, password, temp_password, hash, email_address, security_question, security_question_answer, date_of_birth, alias,
-				    skill_level, chess_rank, win, loss, phone_number, profile_privacy, account_flag,player_status, temp_email_attribute) 
+$sqlquery = "INSERT INTO ACCOUNT (firstname, lastname,username, password, temp_password, hash, email_address, security_question, security_question_answer, date_of_birth, alias,
+				    skill_level, chess_rank, win, loss, phone_number, profile_privacy, player_status, account_flag, temp_email_attribute) 
 		VALUES ('$firstname', '$lastname','$myusername', '$mypassword', 'NULL', '$hash', '$myemail', '$securityQuestion','$securityAnswer','$dateofbirth','$alias',
-			 '$skill', 2000, 0,0, '$phone',1, 2, 3, 'NULL' )";
+			 '$skill', 2000, 0,0, '$phone',1, 0, 0, 'NULL' )";
 
 //Query is run using mysql_query and the username and attributes are added into the "users" table.
 $query = mysqli_query($con,$sqlquery);
